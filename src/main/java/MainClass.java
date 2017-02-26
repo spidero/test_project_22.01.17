@@ -33,7 +33,8 @@ public class MainClass {
         File file = new File(pathToFile);
         file.mkdir();
 
-        if ((new File(FILENAME_RENTED_CARS)).exists()) { //при кожному запуску перевіряємо чи минув термін оренди
+        /*при кожному запуску перевіряємо чи минув термін оренди*/
+        if ((new File(FILENAME_RENTED_CARS)).exists()) {
             new EndRents().execute();
         }
 
@@ -73,7 +74,8 @@ public class MainClass {
         return sdf.format(new Date());
     }
 
-    public static void StringWriteToFile(String filenameWriteTo, String toWrite) throws IOException { // записуємо стрінг в кінець файла
+    /*записуємо стрінг в кінець файла*/
+    public static void StringWriteToFile(String filenameWriteTo, String toWrite) throws IOException {
         RandomAccessFile fileAddString = new RandomAccessFile(filenameWriteTo, "rw");
         long LengthFile = 0, position = 0;
         LengthFile = fileAddString.length();
@@ -87,7 +89,8 @@ public class MainClass {
         fileAddString.close();
     }
 
-    public static void ArrayWriteToFile(String filenameWriteTo, ArrayList<String> listToWrite) throws IOException { //записуємо аррай ліст в кінець файла
+    /*записуємо аррай ліст в кінець файла*/
+    public static void ArrayWriteToFile(String filenameWriteTo, ArrayList<String> listToWrite) throws IOException {
         RandomAccessFile fileWrite = new RandomAccessFile(filenameWriteTo, "rw");
         long LengthFileWrite, positionAdd = 0;
         LengthFileWrite = fileWrite.length();
@@ -107,7 +110,8 @@ public class MainClass {
         fileWrite.close();
     }
 
-    public static String createID(String filename) throws IOException { // нумерація. читаємо файл і беремо звідти цифру. записуємо на один більше. і по кругу.
+    /*нумерація. читаємо файл і беремо звідти цифру. записуємо на один більше. і по кругу.*/
+    public static String createID(String filename) throws IOException {
         int newID = 1;
         if (!(new File(filename)).exists()) {
             Writer wr = new FileWriter(filename);

@@ -32,13 +32,15 @@ public class RentCar {
         History.writeHistory(listToActiveRents, "");
     }
 
-    public static void deleteAddString(String fileToDelete, String delete) throws IOException { //замінює конкретний текст на пусте місце (видаляє текст з файлу)
+    /*замінює конкретний текст на пусте місце (видаляє текст з файлу)*/
+    public static void deleteAddString(String fileToDelete, String delete) throws IOException {
         Charset charset = StandardCharsets.UTF_8;
         Path path = Paths.get(fileToDelete);
         Files.write(path, new String(Files.readAllBytes(path), charset).replace(delete, "").getBytes(charset));
     }
 
-    private String search(String ID, String filename) throws Exception { // находить у файлі цілий рядок, який починається на конкретні символи. зберігає цілий рядок у стрінг
+    /*находить у файлі цілий рядок, який починається на конкретні символи. зберігає цілий рядок у стрінг*/
+    private String search(String ID, String filename) throws Exception { 
         BufferedReader file = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
         String str = null;
         String resultStr = null;

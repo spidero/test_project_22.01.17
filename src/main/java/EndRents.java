@@ -11,14 +11,19 @@ import java.util.regex.Pattern;
 /**
  * Created by MyWORID on 23.02.2017.
  */
+
+
+/* This class monitors active rents (does they are actual or not). So it controls REALLY available
+        cars to rent at the moment. It starts with every new start of the program.*/
 public class EndRents {
     public void execute() throws Exception {
-        //This class monitors active rents (does they are actual or not). So it controls REALLY available
-        // cars to rent at the moment. It starts with every new start of the program.
+
+
         findDateInString(MainClass.FILENAME_RENTED_CARS);
     }
 
-    private String openFileAsString(String filename) throws IOException { //перероблюю файл у текст Стрінг
+    /*перероблюю файл у текст Стрінг*/
+    private String openFileAsString(String filename) throws IOException {
         InputStreamReader isr = new InputStreamReader(new FileInputStream(filename));
         BufferedReader buff = new BufferedReader(isr);
         StringBuilder strBuff = new StringBuilder();
@@ -61,7 +66,8 @@ public class EndRents {
             Map.put(dates.get(i), cars.get(i));
         }
 
-        for (Iterator<java.util.Map.Entry<Date, String>> it = Map.entrySet().iterator(); it.hasNext(); ) { //compare dates in the map, and delete it in case of the past dates
+        /*compare dates in the map, and delete it in case of the past dates*/
+        for (Iterator<java.util.Map.Entry<Date, String>> it = Map.entrySet().iterator(); it.hasNext(); ) {
             Map.Entry<Date, String> pair = it.next();
             Date dateFromMap = pair.getKey();
             Date currentTime = new Date();
@@ -72,7 +78,8 @@ public class EndRents {
             }
         }
 
-        for (Map.Entry<Date, String> pair : Map.entrySet()) { //add Map to String to write it in file RentedCars
+        /*add Map to String to write it in file RentedCars*/
+        for (Map.Entry<Date, String> pair : Map.entrySet()) {
             Date date = pair.getKey();
             String dateFromMap = dateFormat.format(date);
             String carFromMap = pair.getValue();
