@@ -40,7 +40,7 @@ public class RentCar {
     }
 
     /*находить у файлі цілий рядок, який починається на конкретні символи. зберігає цілий рядок у стрінг*/
-    private String search(String ID, String filename) throws Exception { 
+    private String search(String ID, String filename) throws Exception {
         BufferedReader file = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
         String str = null;
         String resultStr = null;
